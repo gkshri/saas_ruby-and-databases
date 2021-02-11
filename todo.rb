@@ -9,5 +9,8 @@ class Todo < ActiveRecord::Base
         display_date = due_today? ? nil : due_date    
         "#{display_status} #{todo_text} #{display_date}"  
     end
+    def self.to_displayable_list
+        all.map{|todo| todo.to_displayable_string}
+    end
 end
 

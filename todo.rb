@@ -12,5 +12,13 @@ class Todo < ActiveRecord::Base
     def self.to_displayable_list
         all.map{|todo| todo.to_displayable_string}
     end
+    def mark_as_complete(todo_id)
+        all.map{|todo| 
+            if todo.id == todo_id
+                todo.completed=true
+            end
+        }
+    end
+
 end
 
